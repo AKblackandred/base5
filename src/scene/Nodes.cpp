@@ -1,6 +1,7 @@
 #include "Nodes.hpp"
 #include "Node.hpp"
 #include "SceneExceptions.hpp"
+#include <stdexcept>
 
 #include "Vector3.h"
 
