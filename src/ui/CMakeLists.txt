@@ -3,8 +3,6 @@
 # This names our executable (and for VS our project). 
 set(APP ui)  
 
-include(FetchContent)
-
 set(ONLY_LIBS ON CACHE BOOL "Build libs only" FORCE)
 set(glew-cmake_BUILD_STATIC ON CACHE BOOL "Build the static glew library" FORCE)
 set(glew-cmake_BUILD_SHARED OFF CACHE BOOL "Build the shared glew library" FORCE)
@@ -13,7 +11,8 @@ set(USE_GLU OFF CACHE BOOL "Use GLU")
 FetchContent_Declare(
     glew
     GIT_REPOSITORY https://github.com/Perlmint/glew-cmake
-    GIT_TAG glew-cmake-2.2.0
+    #GIT_TAG glew-cmake-2.2.0 # Last update was 2020 same for glew!
+    GIT_TAG 918ece3da858c2e28e10f6507378af01647cb139
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
     OVERRIDE_FIND_PACKAGE TRUE
@@ -32,7 +31,7 @@ set(wxUSE_GLCANVAS_EGL OFF CACHE BOOL "use EGL backend for wxGLCanvas" FORCE)
 FetchContent_Declare(
     wxwidgets
     GIT_REPOSITORY https://github.com/wxWidgets/wxWidgets
-    GIT_TAG v3.2.6
+    GIT_TAG v3.3.0
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
     OVERRIDE_FIND_PACKAGE TRUE
