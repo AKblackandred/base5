@@ -12,7 +12,7 @@ Data model for the application, currently contains:
 
 ## loader ##
 
-Uses ```Fetch_Content``` (CMake) to pull in the TinyXML libraries at configure time and build them.  Version is fixed in the file (it's not the latest). 
+Uses ```Fetch_Content``` (CMake) to pull in the TinyXML libraries at configure time and build them.  Version is fixed in the file the latest is quite old (keeping pace with glew, so I'm using a more recent hash). 
 
 Also has a class called ```TinyXMLPrototype``` 
 
