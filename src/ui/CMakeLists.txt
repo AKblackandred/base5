@@ -3,6 +3,8 @@
 # This names our executable (and for VS our project). 
 set(APP ui)  
 
+set(OpenGL_GL_PREFERENCE GLVND)
+
 set(ONLY_LIBS ON CACHE BOOL "Build libs only" FORCE)
 set(glew-cmake_BUILD_STATIC ON CACHE BOOL "Build the static glew library" FORCE)
 set(glew-cmake_BUILD_SHARED OFF CACHE BOOL "Build the shared glew library" FORCE)
@@ -28,11 +30,13 @@ endif()
 set(wxBUILD_SAMPLES OFF CACHE BOOL "SOME, ALL or OFF" FORCE)
 set(wxBUILD_SHARED OFF CACHE BOOL "Build shared or static libraries" FORCE)
 set(wxUSE_GLCANVAS_EGL OFF CACHE BOOL "use EGL backend for wxGLCanvas" FORCE)
+set(wxBUILD_CXX_STANDARD "COMPILER_DEFAULT" CACHE STRING "Build standard for wxWidgets, limited to COMPILER_DEFAULT, 98, 11 or 14" FORCE)
 
 FetchContent_Declare(
     wxwidgets
     GIT_REPOSITORY https://github.com/wxWidgets/wxWidgets
-    GIT_TAG v3.1.1
+    #GIT_TAG v3.1.1
+    GIT_TAG master
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
     OVERRIDE_FIND_PACKAGE TRUE
@@ -40,6 +44,7 @@ FetchContent_Declare(
 
 if(NOT wxwidgets_POPULATED)
     FetchContent_MakeAvailable(wxwidgets)
+    FetchContent_GetProperties(wxwidgets)
 endif()
  
 file(GLOB UI_FILES *.cpp)
