@@ -1,6 +1,6 @@
 # CMake Lists 
 
-cmake_minimum_required (VERSION 3.6.0)
+cmake_minimum_required (VERSION 4.1.1)
  
 set(PROJECT_NAME_STR OgreSceneLoader)
 project(${PROJECT_NAME_STR} C CXX)

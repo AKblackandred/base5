@@ -35,7 +35,7 @@ set(tinyxml2_BUILD_TESTING OFF CACHE STRING "Build tests for tinyxml2" FORCE)
 FetchContent_Declare(
     tinyxml2
     GIT_REPOSITORY https://github.com/leethomason/tinyxml2
-    GIT_TAG 10.0.0
+    GIT_TAG 11.0.0
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
     OVERRIDE_FIND_PACKAGE TRUE

@@ -46,6 +46,37 @@ TEST_F(SceneFileLoaderTestHarness,constructor_noArgs)
     //EXPECT_STREQ(txp->getFilename().c_str(), "not set");
 }
 
+TEST_F(SceneFileLoaderTestHarness, testDiscReadWrite) 
+{
+    /*
+    std::string filename = "..\\testfiles\\ProfileContourDS.mat";
+    string cwd = std::filesystem::current_path().string();
+    filename = cwd + "\\" + filename;
+    */
+   std::string myText;
+   std::string testString = "My text for testing";
+
+    std::ofstream outfile ("../testfiles/test.txt");
+
+    EXPECT_TRUE(outfile.is_open());
+
+    outfile << testString << std::endl;
+
+    outfile.close();
+
+    std::ifstream infile("../testfiles/test.txt");
+
+    EXPECT_TRUE(infile.is_open());
+
+    // Read back the line
+    getline (infile, myText);
+
+    EXPECT_TRUE(myText == testString);
+
+    // Close the file
+    infile.close();
+}
+
 TEST_F(SceneFileLoaderTestHarness, parseSceneTest)
 {
     std::string testFile("testfiles/extendedTest.scene");
