@@ -7,6 +7,7 @@ set(ONLY_LIBS ON CACHE BOOL "Build libs only" FORCE)
 set(glew-cmake_BUILD_STATIC ON CACHE BOOL "Build the static glew library" FORCE)
 set(glew-cmake_BUILD_SHARED OFF CACHE BOOL "Build the shared glew library" FORCE)
 set(USE_GLU OFF CACHE BOOL "Use GLU")
+#set(CMAKE_POLICY_VERSION_MINIMUM "3.5" CACHE STRING "Min Policy Version" FORCE)
 
 FetchContent_Declare(
     glew
@@ -31,7 +32,7 @@ set(wxUSE_GLCANVAS_EGL OFF CACHE BOOL "use EGL backend for wxGLCanvas" FORCE)
 FetchContent_Declare(
     wxwidgets
     GIT_REPOSITORY https://github.com/wxWidgets/wxWidgets
-    GIT_TAG v3.3.0
+    GIT_TAG v3.1.1
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
     OVERRIDE_FIND_PACKAGE TRUE
