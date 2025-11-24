@@ -56,7 +56,7 @@ TEST_F(SceneFileLoaderTestHarness, testDiscReadWrite)
    std::string myText;
    std::string testString = "My text for testing";
 
-    std::ofstream outfile ("../testfiles/test.txt");
+    std::ofstream outfile ("./testfiles/test.txt");
 
     EXPECT_TRUE(outfile.is_open());
 
@@ -64,7 +64,7 @@ TEST_F(SceneFileLoaderTestHarness, testDiscReadWrite)
 
     outfile.close();
 
-    std::ifstream infile("../testfiles/test.txt");
+    std::ifstream infile("./testfiles/test.txt");
 
     EXPECT_TRUE(infile.is_open());
 
