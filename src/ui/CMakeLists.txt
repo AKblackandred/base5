@@ -12,7 +12,7 @@ FetchContent_Declare(
     glew
     GIT_REPOSITORY https://github.com/Perlmint/glew-cmake
     #GIT_TAG glew-cmake-2.2.0 # Last update was 2020 same for glew!
-    GIT_TAG 918ece3da858c2e28e10f6507378af01647cb139
+    GIT_TAG 7e8300fa13ff568aa87ed45407c83f8cbe1b2de9
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
     OVERRIDE_FIND_PACKAGE TRUE
