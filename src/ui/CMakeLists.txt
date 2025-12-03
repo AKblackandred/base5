@@ -3,7 +3,10 @@
 # This names our executable (and for VS our project). 
 set(APP ui)  
 
-set(OpenGL_GL_PREFERENCE GLVND)
+if(NOT WIN32)
+    # Use GLVND on Linux systems
+    set(OpenGL_GL_PREFERENCE GLVND)
+endif()
 
 set(ONLY_LIBS ON CACHE BOOL "Build libs only" FORCE)
 set(glew-cmake_BUILD_STATIC ON CACHE BOOL "Build the static glew library" FORCE)
@@ -35,8 +38,8 @@ set(wxBUILD_CXX_STANDARD "COMPILER_DEFAULT" CACHE STRING "Build standard for wxW
 FetchContent_Declare(
     wxwidgets
     GIT_REPOSITORY https://github.com/wxWidgets/wxWidgets
-    #GIT_TAG v3.1.1
-    GIT_TAG master
+    GIT_TAG v3.3.1
+    #GIT_TAG master
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
     OVERRIDE_FIND_PACKAGE TRUE
