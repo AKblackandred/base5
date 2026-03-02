@@ -1,5 +1,8 @@
 #  Ogre Scene File Loader #
 
+> [!WARNING]
+> There is a known issue with this base project on the lab machines, the alias for the ```G:``` drive causes issues in the generated Visual Studio project for wxWidgets.  Use GitBash and navigate to ```c:/GAMING/``` once you have cloned launch the CMake Gui from here (```cmake-gui.exe yourRepoName```)
+
 Another part-complete example, starting to load the scene from file. 
 
 ## scene ##

@@ -17,7 +17,8 @@ set(USE_GLU OFF CACHE BOOL "Use GLU")
 FetchContent_Declare(
     glew
     GIT_REPOSITORY https://github.com/Perlmint/glew-cmake
-    GIT_TAG glew-cmake-2.3.0 # Dec 24 2025
+    GIT_TAG glew-cmake-2.3.1 # Jan 24 2026
+    #GIT_TAG glew-cmake-2.3.0 # Dec 24 2025
     #GIT_TAG 7e8300fa13ff568aa87ed45407c83f8cbe1b2de9
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
