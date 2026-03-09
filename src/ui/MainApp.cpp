@@ -29,7 +29,7 @@ wxAppInitializer wxTheAppInitializer((wxAppInitializerFunction) wxCreateApp);
 bool MainApp::OnInit() 
 {
 	// Create an instance of our frame, or window 
-	MainFrame *MainWin = new MainFrame(_("Hello World!"), wxDefaultPosition, wxSize(300, 200));
+	MainFrame *MainWin = new MainFrame(_("OgreSceneFileLoader"), wxDefaultPosition, wxSize(300, 200));
 	MainWin->Show(true); // show the window 
 	SetTopWindow(MainWin); // and finally, set it as the main window 
 	return true;
