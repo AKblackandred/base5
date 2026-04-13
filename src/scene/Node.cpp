@@ -5,6 +5,11 @@ Node::Node()
 {
     position = nullptr;
     entity = nullptr;
+	scale = nullptr;
+	rotation = nullptr;
+	light = nullptr;
+	colourDiffuse = nullptr;
+	colourSpecular = nullptr;
     child = nullptr;
 }
 
@@ -12,6 +17,11 @@ Node::~Node()
 {
     position.reset();
     entity.reset();
+	scale.reset();
+	rotation.reset();
+	light.reset();
+	colourDiffuse.reset();
+	colourSpecular.reset();
     child.reset();
 }
 
@@ -33,6 +43,46 @@ void Node::setEntity(std::shared_ptr<Entity> entity)
 std::shared_ptr<Entity> Node::getEntity()
 {
    return entity;
+}
+
+void Node::setScale(std::shared_ptr<Maths::Vector3> scale)
+{
+    this->scale = scale;
+}
+
+std::shared_ptr<Maths::Vector3> Node::getScale()
+{
+    return scale;
+}
+
+void Node::setRotation(std::shared_ptr<Maths::Quaternion> rotation)
+{
+    this->rotation = rotation;
+}
+
+std::shared_ptr<Maths::Quaternion> Node::getRotation()
+{
+    return rotation;
+}
+
+void Node::setLight(std::shared_ptr<Light> light)
+{
+    this->light = light;
+}
+
+std::shared_ptr<Light> Node::getLight()
+{
+    return light;
+}
+
+void Node::setColourDiffuse(std::shared_ptr<Maths::Vector3> colourDiffuse)
+{
+    this->colourDiffuse = colourDiffuse;
+}
+
+std::shared_ptr<Maths::Vector3> Node::getColourDiffuse()
+{
+    return colourDiffuse;
 }
 
 void Node::setChildNode(std::shared_ptr<Node> node)

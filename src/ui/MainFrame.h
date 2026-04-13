@@ -13,17 +13,21 @@ class MainFrame: public wxFrame // MainFrame is the class for our window,
 
 	wxPanel* mainPanel = nullptr;
 	wxBoxSizer* hSizer = nullptr;
+	wxBoxSizer* cSizer = nullptr;
 	wxButton* bigRedButton = nullptr;
 	wxButton* smallBlueButton = nullptr;
 	wxButton* button1 = nullptr;
 	wxButton* button2 = nullptr;
+	wxButton* tempButton = nullptr;
 	wxSlider* slider = nullptr;
 	wxTextCtrl* textField = nullptr;
+	wxTextCtrl* tempField = nullptr;
 
 private:
 	void setupMenu();
 	void controlsExample();
 	void sizerExample();
+	void tempSizer();
 
 	// open event handler
 	void OnOpen(wxCommandEvent& event);
@@ -33,8 +37,10 @@ private:
 	void OnSBBClick(wxCommandEvent& event);
 	void OnClick1(wxCommandEvent& event);
 	void OnClick2(wxCommandEvent& event);
+	void OnTempConvert(wxCommandEvent& event);
 	void OnSliderChange(wxScrollEvent& event);
 	void OnTextEnter(wxCommandEvent& event);
+	void OnTempEnter(wxCommandEvent& event);
 
 	// It contains the window and all objects in it 
 public: 

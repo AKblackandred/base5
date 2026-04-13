@@ -95,6 +95,27 @@ void MainFrame::sizerExample()
 	mainPanel->SetSizer(hSizer);
 }
 
+void MainFrame::tempSizer()
+{
+	setupMenu();
+
+	mainPanel = new wxPanel(this, wxID_ANY);
+
+	cSizer = new wxBoxSizer(wxHORIZONTAL);
+
+	tempField = new wxTextCtrl(mainPanel, wxID_ANY, "Celsius:", wxPoint(700, 50), wxDefaultSize, wxTE_PROCESS_ENTER);
+
+	tempButton = new wxButton(mainPanel, wxID_ANY, "Convert", wxDefaultPosition, wxDefaultSize);
+
+	tempButton->Bind(wxEVT_BUTTON, &MainFrame::OnTempEnter, this);
+	tempField->Bind(wxEVT_TEXT_ENTER, &MainFrame::OnTempConvert, this);
+
+	cSizer->Add(tempField, 0, wxALIGN_CENTER | wxALL, 10);
+	cSizer->Add(tempButton, 0, wxALIGN_CENTER | wxALL, 10);
+
+	mainPanel->SetSizer(cSizer);
+}
+
 MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size) 
 : wxFrame((wxFrame *) NULL, -1, title, pos, size) 
 {
@@ -111,7 +132,8 @@ MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& si
 	wxLogDebug("Hello, wxWidgets! I am in your walls, eating your forgotten cheese!");
 
 	//controlsExample();
-	sizerExample();
+	//sizerExample();
+	tempSizer();
 }
 
 void MainFrame::OnOpen(wxCommandEvent& event) 
@@ -158,7 +180,13 @@ void MainFrame::OnClick1(wxCommandEvent& event)
 void MainFrame::OnClick2(wxCommandEvent& event)
 {
 	wxLogDebug("OnClick2");
-	wxMessageBox("You clicked the second button! Bad job.", "Button Clicked", wxOK | wxICON_INFORMATION);
+	wxMessageBox("What the hell, man? I said DON'T click!", "Button Clicked", wxOK | wxICON_INFORMATION);
+}
+
+void MainFrame::OnTempConvert(wxCommandEvent& event)
+{
+	wxLogDebug("OnTempConvert - %s", event.GetString());
+
 }
 
 void MainFrame::OnSliderChange(wxScrollEvent& event)
@@ -188,4 +216,14 @@ void MainFrame::OnTextEnter(wxCommandEvent& event)
 {
 	wxLogDebug("Text Entered - %s", event.GetString());
 	smallBlueButton->SetLabel(event.GetString());
+}
+
+void MainFrame::OnTempEnter(wxCommandEvent& event)
+{
+	wxLogDebug("Temp Entered - %s", event.GetString());
+}
+
+float celsiusToFahrenheit(float C)
+{
+	return C * 1.8f + 32.0f;
 }

@@ -12,7 +12,8 @@ namespace Maths
 
 		float		mX, mY, mZ, mW; 
 
-		Quaternion() {
+		Quaternion()
+		{
 			mX = mY = mZ = 0.0f;
 			mW = 1.0f;
 		}
@@ -30,6 +31,14 @@ namespace Maths
 			mZ(orig.mZ),
 			mW(orig.mW)
 		{}
+
+		void Set( float x, float y, float z, float w )
+		{
+			mX = x;
+			mY = y;
+			mZ = z;
+			mW = w;
+		}
 
 		// Note: this is const as it does not change the object it is called on
 		bool operator==( const Quaternion& inRight ) const

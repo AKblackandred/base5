@@ -11,11 +11,13 @@ class Scene;
 class Nodes;
 class Node;
 class Entity;
+class Light;
 
-namespace Maths {
+namespace Maths
+{
 	class Vector3;
+	class Quaternion;
 }
-
 
 class SceneFileLoader
 {
@@ -39,7 +41,12 @@ private:
 	std::shared_ptr<Node> parseNode(std::shared_ptr<tinyxml2::XMLElement> node);
 	std::shared_ptr<Maths::Vector3> parsePosition(std::shared_ptr<tinyxml2::XMLElement> position);
 	std::shared_ptr<Entity> parseEntity(std::shared_ptr<tinyxml2::XMLElement> entity);
-	
+	std::shared_ptr<Maths::Vector3> parseScale(std::shared_ptr<tinyxml2::XMLElement> scale);
+	std::shared_ptr<Maths::Quaternion> parseRotation(std::shared_ptr<tinyxml2::XMLElement> rotation);
+	std::shared_ptr<Light> parseLight(std::shared_ptr<tinyxml2::XMLElement> light);
+	std::shared_ptr<Maths::Vector3> parseColourDiffuse(std::shared_ptr<tinyxml2::XMLElement> colourDiffuse);
+	std::shared_ptr<Maths::Vector3> parseColourSpecular(std::shared_ptr<tinyxml2::XMLElement> colourSpecular);
+
 	// Needs to be in scope while the file is being
 	// parsed
 	tinyxml2::XMLDocument doc;
