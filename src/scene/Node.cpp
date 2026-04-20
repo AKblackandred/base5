@@ -8,8 +8,6 @@ Node::Node()
 	scale = nullptr;
 	rotation = nullptr;
 	light = nullptr;
-	colourDiffuse = nullptr;
-	colourSpecular = nullptr;
     child = nullptr;
 }
 
@@ -20,8 +18,6 @@ Node::~Node()
 	scale.reset();
 	rotation.reset();
 	light.reset();
-	colourDiffuse.reset();
-	colourSpecular.reset();
     child.reset();
 }
 
@@ -73,16 +69,6 @@ void Node::setLight(std::shared_ptr<Light> light)
 std::shared_ptr<Light> Node::getLight()
 {
     return light;
-}
-
-void Node::setColourDiffuse(std::shared_ptr<Maths::Vector3> colourDiffuse)
-{
-    this->colourDiffuse = colourDiffuse;
-}
-
-std::shared_ptr<Maths::Vector3> Node::getColourDiffuse()
-{
-    return colourDiffuse;
 }
 
 void Node::setChildNode(std::shared_ptr<Node> node)

@@ -3,7 +3,8 @@
 
 #include <memory>
 
-namespace Maths {
+namespace Maths
+{
 	class Vector3;
     class Quaternion;
 }

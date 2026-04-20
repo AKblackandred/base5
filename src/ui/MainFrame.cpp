@@ -1,4 +1,5 @@
 #include "MainFrame.h"
+#include <MyGLCanvas.h>
 
 void MainFrame::setupMenu()
 {
@@ -26,6 +27,11 @@ void MainFrame::setupMenu()
 	fileMenu->Bind(wxEVT_MENU, &MainFrame::OnOpen, this, wxID_OPEN);
 	helpMenu->Bind(wxEVT_MENU, &MainFrame::OnAbout, this, wxID_ABOUT);
 	helpMenu->Bind(wxEVT_MENU, &MainFrame::OnWhy, this, wxID_HELP);
+}
+
+void MainFrame::setupUI()
+{
+
 }
 
 void MainFrame::controlsExample()
@@ -116,6 +122,27 @@ void MainFrame::tempSizer()
 	mainPanel->SetSizer(cSizer);
 }
 
+void MainFrame::OpenGLExample()
+{
+	SetTitle("Ogre Scene File Loader");
+
+	setupMenu();
+	setupUI();
+	
+	wxGLAttributes canvasAttrs;
+	canvasAttrs.PlatformDefaults().RGBA().Depth(16).DoubleBuffer().SampleBuffers(1).Samplers(4).EndList();
+
+	wxGLContextAttrs contextAttrs;
+	contextAttrs.PlatformDefaults().CompatibilityProfile().OGLVersion(4, 1).EndList();
+
+	MyGLCanvas* glCanvas = new MyGLCanvas(this, wxID_ANY, canvasAttrs, contextAttrs, wxDefaultPosition, wxDefaultSize);
+
+	//setup timer
+	mainTimer = new Timer();
+	mainTimer->setCanvas(glCanvas);
+	mainTimer->Start(16);
+}
+
 MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size) 
 : wxFrame((wxFrame *) NULL, -1, title, pos, size) 
 {
@@ -133,7 +160,16 @@ MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& si
 
 	//controlsExample();
 	//sizerExample();
-	tempSizer();
+	//tempSizer();
+	OpenGLExample();
+}
+
+MainFrame::~MainFrame()
+{
+	if (mainTimer)
+	{
+		mainTimer->Stop();
+	}
 }
 
 void MainFrame::OnOpen(wxCommandEvent& event) 

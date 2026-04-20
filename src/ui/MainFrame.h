@@ -2,6 +2,9 @@
 #define MAIN_FRAME_H_
 
 #include <wx/wx.h>
+#include <Timer.h>
+
+class MyGLCanvas;
 
 class MainFrame: public wxFrame // MainFrame is the class for our window, 
 { 
@@ -11,6 +14,7 @@ class MainFrame: public wxFrame // MainFrame is the class for our window,
 
 #endif
 
+	Timer* mainTimer = nullptr;
 	wxPanel* mainPanel = nullptr;
 	wxBoxSizer* hSizer = nullptr;
 	wxBoxSizer* cSizer = nullptr;
@@ -25,9 +29,11 @@ class MainFrame: public wxFrame // MainFrame is the class for our window,
 
 private:
 	void setupMenu();
+	void setupUI();
 	void controlsExample();
 	void sizerExample();
 	void tempSizer();
+	void OpenGLExample();
 
 	// open event handler
 	void OnOpen(wxCommandEvent& event);
@@ -45,6 +51,7 @@ private:
 	// It contains the window and all objects in it 
 public: 
 	MainFrame(const wxString &title, const wxPoint &pos, const wxSize &size);
+	~MainFrame();
 }; 
 
 #endif

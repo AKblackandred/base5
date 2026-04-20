@@ -218,35 +218,6 @@ std::shared_ptr<Maths::Quaternion> SceneFileLoader::parseRotation(std::shared_pt
 	return SetRotation;
 }
 
-std::shared_ptr<Light> SceneFileLoader::parseLight(std::shared_ptr<tinyxml2::XMLElement> light)
-{
-	std::shared_ptr<Light>lightObject(new Light());
-
-	std::string type = light->Attribute("type");
-
-	lightObject->setType(type);
-
-	std::shared_ptr<tinyxml2::XMLElement> lightChild(light->FirstChildElement(), NoOppDeleter());
-
-	while (lightChild != NULL)
-		if (std::string(lightChild->Name()).compare("colourDiffuse") == 0)
-		{
-			std::shared_ptr<Maths::Vector3> colourDiffuse = parseColourDiffuse(lightChild);
-			lightObject->setColourDiffuse(colourDiffuse);
-		}
-		else
-		{
-			if (std::string(lightChild->Name()).compare("colourSpecular") == 0)
-			{
-				std::shared_ptr<Maths::Vector3> colourSpecular = parseColourSpecular(lightChild);
-				lightObject->setColourSpecular(colourSpecular);
-			}
-			
-			lightChild.reset(lightChild->NextSiblingElement(), NoOppDeleter());
-
-	return lightObject;
-}
-
 std::shared_ptr<Maths::Vector3> SceneFileLoader::parseColourDiffuse(std::shared_ptr<tinyxml2::XMLElement> colourDiffuse)
 {
 	std::shared_ptr<Maths::Vector3>colour(new Maths::Vector3());
@@ -275,4 +246,33 @@ std::shared_ptr<Maths::Vector3> SceneFileLoader::parseColourSpecular(std::shared
 	colour->Set(r, g, b);
 
 	return colour;
+}
+
+std::shared_ptr<Light> SceneFileLoader::parseLight(std::shared_ptr<tinyxml2::XMLElement> light)
+{
+	std::shared_ptr<Light>lightObject(new Light());
+
+	std::string type = light->Attribute("type");
+
+	lightObject->setType(type);
+
+	std::shared_ptr<tinyxml2::XMLElement> lightChild(light->FirstChildElement(), NoOppDeleter());
+
+	while (lightChild != NULL)
+		if (std::string(lightChild->Name()).compare("colourDiffuse") == 0)
+		{
+			std::shared_ptr<Maths::Vector3> colourDiffuse = parseColourDiffuse(lightChild);
+			lightObject->setColourDiffuse(colourDiffuse);
+		}
+		else
+		{
+			if (std::string(lightChild->Name()).compare("colourSpecular") == 0)
+			{
+				std::shared_ptr<Maths::Vector3> colourSpecular = parseColourSpecular(lightChild);
+				lightObject->setColourSpecular(colourSpecular);
+			}
+
+			lightChild.reset(lightChild->NextSiblingElement(), NoOppDeleter());
+		}
+	return lightObject;
 }
