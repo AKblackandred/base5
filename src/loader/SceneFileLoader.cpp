@@ -82,7 +82,6 @@ std::shared_ptr<Nodes> SceneFileLoader::parseNodes(std::shared_ptr<tinyxml2::XML
         {
             std::shared_ptr<Node> newNode = parseNode(nodesChild);
             nodesObject->addNode(newNode);
-
         }
 		else 
 		{
@@ -107,6 +106,8 @@ std::shared_ptr<Node> SceneFileLoader::parseNode(std::shared_ptr<tinyxml2::XMLEl
 	std::shared_ptr<Node>nodeObject(new Node());
 
 	std::shared_ptr<tinyxml2::XMLElement> nodeChild(node->FirstChildElement(), NoOppDeleter());
+
+	nodeObject->setName(node->Name());
 
 	while(nodeChild != NULL)
 	{
