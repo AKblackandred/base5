@@ -1,6 +1,9 @@
 #include "MainFrame.h"
 #include <MyGLCanvas.h>
 
+using namespace std;
+using namespace cst;
+
 void MainFrame::setupMenu()
 {
 	// file menu
@@ -161,7 +164,8 @@ MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& si
 	//controlsExample();
 	//sizerExample();
 	//tempSizer();
-	OpenGLExample();
+	//OpenGLExample();
+	TreeviewExample();
 }
 
 MainFrame::~MainFrame()
@@ -176,8 +180,31 @@ void MainFrame::OnOpen(wxCommandEvent& event)
 {
 	wxLogDebug("Open Option Pressed");
 
-	wxFileDialog openDialog(this, "Open Scene File", "", "", "*.scene", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+	wxFileDialog openDialog(this, "Open XML File", "", "", "*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 	auto result = openDialog.ShowModal();
+	wxLogDebug("openDialog result = %d", result);
+
+	if (result == wxID_OK)
+	{
+		wxLogDebug("File Selected SUCCESS!");
+		wxString path = openDialog.GetPath();
+		wxLogDebug("path = % s", path.c_str());
+
+		tinyxml2::XMLDocument dom;
+		auto xml_error = dom.LoadFile(path.c_str());
+
+		if (xml_error == tinyxml2::XMLError::XML_SUCCESS)
+		{
+			wxLogDebug("tinyxml Load Success!");
+
+			School* cst = CSTParser::ParseSchool(dom.RootElement());
+
+			wxLogDebug("parse complete!");
+			
+			CSTTreeView::buildTree(cst, treeView);
+		}
+	}
+
 }
 
 void MainFrame::OnAbout(wxCommandEvent& event)
@@ -257,6 +284,21 @@ void MainFrame::OnTextEnter(wxCommandEvent& event)
 void MainFrame::OnTempEnter(wxCommandEvent& event)
 {
 	wxLogDebug("Temp Entered - %s", event.GetString());
+}
+
+void MainFrame::TreeviewExample()
+{
+	SetTitle("Treeview Example");
+	setupMenu();
+
+	wxPanel* mainPanel = new wxPanel(this, wxID_ANY);
+	wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
+
+	treeView = new wxTreeCtrl(mainPanel);
+
+	mainSizer->Add(treeView, 1, wxEXPAND | wxALL, 10);
+
+	mainPanel->SetSizer(mainSizer);
 }
 
 float celsiusToFahrenheit(float C)

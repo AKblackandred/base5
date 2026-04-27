@@ -82,6 +82,7 @@ std::shared_ptr<Nodes> SceneFileLoader::parseNodes(std::shared_ptr<tinyxml2::XML
         {
             std::shared_ptr<Node> newNode = parseNode(nodesChild);
             nodesObject->addNode(newNode);
+
         }
 		else 
 		{

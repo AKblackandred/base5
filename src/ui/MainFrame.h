@@ -2,7 +2,17 @@
 #define MAIN_FRAME_H_
 
 #include <wx/wx.h>
+#include <wx/treectrl.h>
+#include <MyGLCanvas.h>
 #include <Timer.h>
+#include <cst_model/StaffMember.h>
+#include <cst_model/HoD.h>
+#include <cst_model/Department.h>
+#include <cst_model/DeputyDean.h>
+#include <cst_model/Dean.h>
+#include <cst_model/School.h>
+#include <CSTParser.h>
+#include <CSTTreeView.h>
 
 class MyGLCanvas;
 
@@ -14,6 +24,7 @@ class MainFrame: public wxFrame // MainFrame is the class for our window,
 
 #endif
 
+	wxTreeCtrl* treeView = nullptr;
 	Timer* mainTimer = nullptr;
 	wxPanel* mainPanel = nullptr;
 	wxBoxSizer* hSizer = nullptr;
@@ -47,6 +58,8 @@ private:
 	void OnSliderChange(wxScrollEvent& event);
 	void OnTextEnter(wxCommandEvent& event);
 	void OnTempEnter(wxCommandEvent& event);
+
+	void TreeviewExample();
 
 	// It contains the window and all objects in it 
 public: 

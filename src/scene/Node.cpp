@@ -80,3 +80,13 @@ std::shared_ptr<Node> Node::getChildNode()
 {
     return child;
 }
+
+void Node::setName(std::string name)
+{
+    this->name = name;
+}
+
+std::string Node::getName()
+{
+    return name;
+}

@@ -1,0 +1,21 @@
+<School name="CST">
+<Dean name="Jon">
+<Deputy-Dean name="Jason">
+<Department name="Games Dev">
+<HoD name="Paul" room="F110"/>
+<StaffMember name="Simon" room="F007"/>
+<StaffMember name="Glenn" room="F008"/>
+<StaffMember name="Ian" room="F111"/>
+<StaffMember name="Andrew"/>
+</Department>
+<Department name="Software Engineering">
+<HoD name="Stu" room="F112"/>
+<StaffMember name="Ijaz" room="A112"/>
+</Department>
+</Deputy-Dean>
+<ADSE name="Jemma"/>
+<ADP name="Cath"/>
+<ADR name="Chami"/>
+<SROM name="Rhi"/>
+</Dean>
+</School>
